@@ -85,7 +85,9 @@ class ViewController: UIViewController {
 
 extension ViewController : AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        
+        connection.videoOrientation = .portrait
+        let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
+        let cameraImage = CIImage(cvPixelBuffer: pixelBuffer!)
     }
 }
 
